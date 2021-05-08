@@ -60,8 +60,12 @@
 										主页
 									</a></li>
 								
-								<li><a href="/tags/%E9%9A%8F%E7%AC%94/">
-										随笔
+								<li><a href="/tags/%E5%89%8D%E7%AB%AF/">
+										前端
+									</a></li>
+								
+								<li><a href="/tags/%E7%AE%97%E6%B3%95/">
+										算法
 									</a></li>
 								
 								<li><a href="/archives/index.html">
@@ -71,7 +75,7 @@
 						</ul>
 					</nav>
 					<nav>
-						总文章数 1
+						总文章数 3
 					</nav>
 					<nav class="header-smart-menu">
 						
@@ -135,6 +139,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -153,11 +159,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 25%"><a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives/index.html">归档</a></li>
+					<li style="width: 25%"><a href="/tags/%E7%AE%97%E6%B3%95/">算法</a></li>
+		        
+					<li style="width: 25%"><a href="/archives/index.html">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -173,6 +181,214 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-构造函数和原型"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/08/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B/">构造函数和原型</a>
+    </h1>
+  
+
+          <!--显示阅读次数-->
+          
+              <!--显示阅读次数完毕-->
+              
+                <a href="/2021/05/08/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2021-05-08T03:09:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-08</time>
+</a>
+                  
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
+          
+                    <h3 id="构造函数和原型导读"><a href="#构造函数和原型导读" class="headerlink" title="构造函数和原型导读"></a>构造函数和原型导读</h3><p>class是在es6之后新增的，在es6之前，对象不是基于类创建的，而是用一种构造函数的特殊函数来定义对象和他们的特征。</p>
+<p>创建对象的三种方式：</p>
+<p>1、对象字面量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>2、new object（）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>（）；</span><br></pre></td></tr></table></figure>
+
+<p>3、自定义构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Star</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">    <span class="built_in">this</span>.sing = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name + <span class="string">&#x27;sing a song&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> adele = <span class="keyword">new</span> Star(<span class="string">&#x27;阿黛尔&#x27;</span>, <span class="number">20</span>)</span><br><span class="line">adele.sing()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>new执行的过程：</p>
+<ol>
+<li>在内存中创建一个新的空对象</li>
+<li>让this指向这个新对象</li>
+<li>执行构造函数里面的代码，给这个新对象添加属性和方法</li>
+<li>返回这个新对象</li>
+</ol>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>实例成员：构造函数内部通过this添加的成员 如：uname age sing 。实例成员只能通过实例化的对象来访问，不可以通过构造函数来访问实例成员</p>
+<p>静态成员：在构造函数本身上添加的成员，只能通过构造函数来访问</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Star.sex = <span class="string">&#x27;男&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>构造函数方法很好用，但是存在浪费内存的问题</p>
+<p><img src="D:\study\blog\themes\yilia\source\img\construct.png" alt="构造函数"></p>
+<p>我们希望所有对象使用同一个函数，不用在开辟内存空间</p>
+<h3 id="构造函数原型-prototype"><a href="#构造函数原型-prototype" class="headerlink" title="构造函数原型 prototype"></a>构造函数原型 prototype</h3><p>构造函数通过原型分配的函数是所有对象共享的</p>
+<p>javascript规定，每一个构造函数都有一个ptototype属性，指向一个对象。这个ptototype就是一个对象，这个对象的所有属性和方法，都会被构造函数所拥有。</p>
+<p>我们可以把那些不变的方法，直接定义在prototype对象上，这样所有的对象实例就可以共享这些方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每一个构造函数都有一个原型对象，在原型对象上定义方法可以实现所有对象共享该方法，即共享同一块地址空间。</span></span><br><span class="line">     Star.prototype.sing = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="built_in">this</span>.name + <span class="string">&quot;sing a song&quot;</span>);</span><br><span class="line">     &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>总结</p>
+<p>1、原型是什么？</p>
+<p>一个对象吗，也称为prototype</p>
+<p>2、原型的作用是什么？</p>
+<p>共享方法</p>
+<p>一般来说，我们公共的属性定义到构造函数里面，公共的方法我们放到原型对象身上。</p>
+
+                      
+
+                        
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                
+
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2021/05/08/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
+  </div>
+</article>
+
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+        
+  
+    <article id="post-编程思想"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/08/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/">编程思想</a>
+    </h1>
+  
+
+          <!--显示阅读次数-->
+          
+              <!--显示阅读次数完毕-->
+              
+                <a href="/2021/05/08/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/" class="archive-article-date">
+  	<time datetime="2021-05-08T03:08:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-08</time>
+</a>
+                  
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
+          
+                    <h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h2><p>面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候一个一个依次调用就可以了；</p>
+<h3 id="案列：将大象装入冰箱"><a href="#案列：将大象装入冰箱" class="headerlink" title="案列：将大象装入冰箱"></a>案列：将大象装入冰箱</h3><p>1、打开冰箱  2、把大象装进去  3、关闭冰箱</p>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象是把构成问题事务分解成各个对象，建立对象的目的不是为了完成一个步骤，而是为了描叙某个事物在整个解决问题的步骤中的行为。 </p>
+<p>特性：封装、继承、多态</p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>将同一类事物的特征和功能包装在一起，只对外暴露需要调用的接口而已。想让你看到的你就看得到，不想让你看到的就见不到。对于封装也称为信息的隐藏，体现的最淋漓尽致的地方就是来定义接口了，在接口中我们没有任何功能的实现，只是定义了一系列抽象的方法声明。在Java中接口是体现封装最常用的方法</p>
+<p> <strong>封装的好处</strong>：<br>1、实现专业的分工<br>2、减少代码的耦合 </p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>所谓继承是Java中面向对象最显著的一个特征，继承是从已有的类中派生出新的类，新的类可以吸收已有的属性、行为，并扩展新的能力。在Java中不支持多继承，单继承使Java的继承关系很简单，一个类只能有一个父类，这样易于我们的管理，同时父类也是子类的抽象化，而子类反过来就是父类的具体化</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p> 多态是同一个行为具有多个不同表现形式或形态的能力 </p>
+<h3 id="案列：将大象装入冰箱-1"><a href="#案列：将大象装入冰箱-1" class="headerlink" title="案列：将大象装入冰箱"></a>案列：将大象装入冰箱</h3><p>先找出对象，写出对象的功能</p>
+<p>冰箱： 打开 关闭</p>
+<p>大象：进去</p>
+<p>使用冰箱和大象的功能</p>
+
+                      
+
+                        
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                
+
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2021/05/08/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
+  </div>
+</article>
+
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+        
   
     <article id="post-最小的k个数"
   class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -218,7 +434,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">主页</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -357,7 +573,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">主页</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>
