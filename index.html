@@ -75,7 +75,7 @@
 						</ul>
 					</nav>
 					<nav>
-						总文章数 3
+						总文章数 4
 					</nav>
 					<nav class="header-smart-menu">
 						
@@ -182,6 +182,141 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-动态规划"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+    </h1>
+  
+
+          <!--显示阅读次数-->
+          
+              <!--显示阅读次数完毕-->
+              
+                <a href="/2021/05/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="archive-article-date">
+  	<time datetime="2021-05-09T00:36:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-09</time>
+</a>
+                  
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
+          
+                    <h2 id="动态规划的三大步骤"><a href="#动态规划的三大步骤" class="headerlink" title="动态规划的三大步骤"></a>动态规划的三大步骤</h2><p>动态规划就是利用历史记录，来避免我们重复计算。而这些历史记录需要我们用一些变量来保存，一般是一维数组或者二维数组来保存。</p>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>定义数组元素的含义，我们会利用一个数组来保存历史记录，设数组为dp[],那么在这个时候，最重要的一点就是规定数组元素的含义，比如：dp[i]代表什么意思？</p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>找出数组元素之间的关系式，当我们要就算dp[n]时，是可以利用dp[n-1]、dp[n-2]、….dp[1],推导出来的。也就是说可以利用历史数据推出新元素的值。</p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>找初始值，有了初始值和数组元素之间的关系式。那么我们就可以求出dp[n]的值了。</p>
+<h3 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h3><p>问题描述：一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个n级台阶多少种跳法？</p>
+<p><strong>（1）定义数组元素的含义</strong></p>
+<p>dp[i]表示青蛙跳上第i级台阶总共有dp[i]种跳法。这样dp[n]就是我们求解问题的答案</p>
+<p><strong>（2）找出数组元素之间的关系式</strong></p>
+<p>由于青蛙一次可以跳上1级或者2级台阶，那么在第i级台阶时，只可能从第i-1级或者第i-2级台阶跳上来。</p>
+<p>所以，dp[i] = dp[i - 1] + dp[i -2]</p>
+<p>（3）<strong>找出初始值</strong></p>
+<p>i = 1  即跳上第一级台阶的跳法，只有一种，所以dp[1] = 1；</p>
+<p>i = 2  即跳上第二级台阶的跳法，有2种，所以dp[2] = 2；</p>
+<p>代码实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n &lt;=<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> dp[n + <span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    dp[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">3</span>; i &lt;= n; i ++ ) &#123;</span><br><span class="line">        dp[i] = dp[i - <span class="number">1</span>] + dp[i <span class="number">-2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="案列2"><a href="#案列2" class="headerlink" title="案列2"></a>案列2</h3><p>问题描述：一个机器人位于一个 m x n 网格的左上角，机器人每次只能向下或者向右移动一步。机器人试图到达网格右下角，问总共有多少条不同的路径？</p>
+<p><img src="D:\study\blog\public\img\Snipaste_2021-05-09_17-53-31.png" alt="不同路径"></p>
+<p><strong>（1）定义数组元素的含义</strong></p>
+<p>dp[i] [j] 表示到达第i行，第j列这个位置的路径数目，那么dp[m] [n] 就是所求问题的解</p>
+<p><strong>（2）找出数组元素之间的关系</strong></p>
+<p>对于第1行的每个位置，机器人只能通过左侧的位置过去，就有 dp[1] [j] = dp[1] [j - 1];对于第一列的每个位置，机器人只能通过上面的位置下去，有dp[i] [1] = dp[i - 1] [1];对于其他位置有dp[i] [j] = dp[i -1] [j] + dp[i] [j - 1]</p>
+<p><strong>（3）找出初始值</strong> </p>
+<p>dp[1] [j] = 1, dp[i] [1] = 1</p>
+<p>代码实现：</p>
+<p>1、力扣上c++ 的版本没有升级到11标准，不支持语法int[] [] dp = new int[m] [n] 声明二维数组</p>
+<p>可以使用指针间接引用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> **dp = <span class="keyword">new</span> <span class="keyword">int</span> *[m];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i ++) &#123;</span><br><span class="line">	dp[i] = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i ++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> || j == <span class="number">0</span>) &#123;</span><br><span class="line">                dp[i][j] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            dp[i][j] = dp[i - <span class="number">1</span>][j] + dp[i][j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[m - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例3"><a href="#案例3" class="headerlink" title="案例3"></a>案例3</h3><p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？</p>
+<p><img src="D:\study\blog\public\img\Snipaste_2021-05-09_17-53-31.png" alt="不同路径"></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/unique-paths-ii">https://leetcode-cn.com/problems/unique-paths-ii</a></p>
+<p><strong>（1）定义数组元素的含义</strong></p>
+<p>dp[i] [j] 表示到达第i行，第j列这个位置的路径数目，那么dp[m] [n] 就是所求问题的解</p>
+<p><strong>（2）找出数组元素之间的关系</strong></p>
+<p>规定：终点位置有障碍物是不能到达终点，所以路径路径数目为0；</p>
+<p>由于在第一行和第一列中，可能也会存在障碍物，所以需要单独初始化，</p>
+<p>针对第一行这里会有两种情况： 1、其左侧有障碍物，则有dp[i] [0]  = 0;</p>
+<p>​                                                         2、 其左侧没有障碍物，则有dp[i] [0] = dp[i - 1] [0]</p>
+<p>对于列的情况一致。</p>
+<p>那么对应其他位置dp[i] [j] ：</p>
+<p>​    （1）该位置的上面有障碍物，左侧没有障碍物,那么只能从左侧到达该位置</p>
+<p>​                                               dp[i] [j] = dp[i] [j -1];</p>
+<p>​    （2）该位置的上面没有障碍物，左侧有障碍物，那么只能从该位置的上面到达</p>
+<p>​                                                dp[i] [j] = dp[i -1] [ j];</p>
+<p>​    （3）该位置的上面和左侧都有障碍物，那么到达该位置的路径数目为0；</p>
+<p>​    （4）该位置的上面和左侧都没有障碍物，</p>
+<p>​                                                dp[i] [j] = dp[i - 1] [j] + dp[i] [j - 1];</p>
+<p><strong>（3）找出初始值</strong> </p>
+<p>​      到达起始位置的路径为1，即dp[0] [0] = 1;</p>
+<p>代码实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; &amp;grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = grid.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">int</span> n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt; dp(m,vector&lt;<span class="keyword">int</span>&gt;(n,0));</span><br><span class="line">    dp[0][0] = 1;</span><br><span class="line">    //对第一行，第一列进行初始化</span><br><span class="line">    <span class="keyword">for</span> （<span class="keyword">int</span> i = 1；i &lt; m; i ++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (grid[i - 1][0] == 1) &#123;</span><br><span class="line">            //第i行，第一列的前面有障碍物，那么就不能到啊该位置</span><br><span class="line">            dp[i][0] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">			dp[i][0] = dp[i - 1][0];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = 1; j &lt; n; j ++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (grid[0][j - 1] == 1) &#123;</span><br><span class="line">            dp[0][j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            dp[0][j] = dp[0][j - 1];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果终点处有障碍物，则没有路径</span><br><span class="line">    <span class="keyword">if</span> (grid[m - 1][n - 1] == 1) &#123;</span><br><span class="line">        <span class="keyword">return</span> 0;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = 1; i &lt; m; i ++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = 1; j &lt; n; j ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grid[i - 1][j] == 1 &amp;&amp; grid[i][j - 1] == 0) &#123;</span><br><span class="line">                dp[i][j] = dp[i][j - 1];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (grid[i][j - 1] == 1 &amp;&amp; grid[i - 1][j] == 0) &#123;</span><br><span class="line">				dp[i][j] = dp[i - 1][j];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (gird[i - 1][j] == 1 &amp;&amp; grid[i][j- 1] == 1) &#123;</span><br><span class="line">                dp[i][j] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[m - 1][n - 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                      
+
+                        
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                
+
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2021/05/09/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
+  </div>
+</article>
+
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+        
+  
     <article id="post-构造函数和原型"
   class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -246,6 +381,7 @@
 <p>2、原型的作用是什么？</p>
 <p>共享方法</p>
 <p>一般来说，我们公共的属性定义到构造函数里面，公共的方法我们放到原型对象身上。</p>
+<p>对象身上系统自动添加一个__ptoto __  指向我们构造函数的 原型对象prototype</p>
 
                       
 
