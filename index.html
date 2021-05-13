@@ -75,7 +75,7 @@
 						</ul>
 					</nav>
 					<nav>
-						总文章数 6
+						总文章数 8
 					</nav>
 					<nav class="header-smart-menu">
 						
@@ -181,6 +181,236 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-动态规划-最长回文子串"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/13/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/">动态规划-最长回文子串</a>
+    </h1>
+  
+
+          <!--显示阅读次数-->
+          
+              <!--显示阅读次数完毕-->
+              
+                <a href="/2021/05/13/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" class="archive-article-date">
+  	<time datetime="2021-05-13T00:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-13</time>
+</a>
+                  
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
+          
+            <h2 id="最长回文子串"><a href="#最长回文子串" class="headerlink" title="最长回文子串"></a>最长回文子串</h2><p>问题描述：给你一个字符串，找到s中最长的回文子串。</p>
+<h3 id="1、定义数组元素的含义"><a href="#1、定义数组元素的含义" class="headerlink" title="1、定义数组元素的含义"></a>1、定义数组元素的含义</h3><p>dp[i] [j] 表示字符串中位置i 到位置j 是否是回文，是为1，不是为0；</p>
+<h3 id="2、找出数组元素之间的关系"><a href="#2、找出数组元素之间的关系" class="headerlink" title="2、找出数组元素之间的关系"></a>2、找出数组元素之间的关系</h3><ul>
+<li><p>i = j 表示字符串中的某一个位置，i和j 都指向字符串中的同一个位置。此时dp[i] [j] = 1;</p>
+</li>
+<li><p>i ！= j  </p>
+<ol>
+<li> str[i] = str[j] ,此时只需要dp[i + 1] [j - 1]是回文串，那么dp[i] [j]就是回文串，</li>
+<li>str[i] != str[j], 此时不管dp[i + 1] [j] 是不是回文串，dp[i] [j] 都不是回文串。</li>
+</ol>
+</li>
+</ul>
+<h3 id="3、找出初始值"><a href="#3、找出初始值" class="headerlink" title="3、找出初始值"></a>3、找出初始值</h3><p>dp[i] [i] = 1;  dp[i] [i + 1] = (str[i]  == str[i + 1] ) ? 1 : 0</p>
+<p>边界表示长度为1 和 2 的子串</p>
+<p>存在的问题：如果按照i和j从小到大的顺序拉枚举子串的两个端点，然后更新dp[i] [j],会无法保证dp[i + 1] [j - 1] 已经被计算过，从未无法计算正确的dp[i] [j]。</p>
+<p>解决方法：每次转移是都对子串的长度减 1，因此可以考虑按子串的长度和子串的初始位置进行枚举。</p>
+              
+                <a class="article-more-a" href="/2021/05/13/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/#more">
+                  more >>
+                </a>
+                
+                  
+
+                        
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                
+
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2021/05/13/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
+  </div>
+</article>
+
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+        
+  
+    <article id="post-本地存储"
+  class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/11/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/">本地存储</a>
+    </h1>
+  
+
+          <!--显示阅读次数-->
+          
+              <!--显示阅读次数完毕-->
+              
+                <a href="/2021/05/11/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/" class="archive-article-date">
+  	<time datetime="2021-05-11T03:13:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-11</time>
+</a>
+                  
+      </header>
+      
+        <div class="article-entry" itemprop="articleBody">
+          
+                    <p>本地存储特性：</p>
+<ol>
+<li><p>数据存储在用户浏览器中</p>
+</li>
+<li><p>设置、读取方便、甚至页面刷新不丢失数据</p>
+</li>
+<li><p>容量比较大，sessionStorage约 5M,localStorage约20M</p>
+</li>
+<li><p>只能存储字符串，可以将对象JSON.stringify()编码后存储</p>
+</li>
+</ol>
+<h3 id="一、sessionStorage-数据的存储以及获取"><a href="#一、sessionStorage-数据的存储以及获取" class="headerlink" title="一、sessionStorage 数据的存储以及获取"></a>一、sessionStorage 数据的存储以及获取</h3><p>window.sessionStorage</p>
+<ol>
+<li>生命周期为关闭浏览器窗口</li>
+<li>在同一个窗口（页面）下数据可以共享</li>
+<li>以键值对的形式存储使用</li>
+</ol>
+<p>把表单里面的值存储起来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.setItem(key,value)</span><br></pre></td></tr></table></figure>
+
+<p>把表单里面的值获取出来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.getItem(key);</span><br></pre></td></tr></table></figure>
+
+<p>移除表单里面的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.removeItem(key);</span><br></pre></td></tr></table></figure>
+
+<p>清除所有数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.clear()</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="二、localStorage-数据的存储以及获取"><a href="#二、localStorage-数据的存储以及获取" class="headerlink" title="二、localStorage 数据的存储以及获取"></a>二、localStorage 数据的存储以及获取</h3><p>window.localStorage</p>
+<ol>
+<li>生命周期永久有效，除非手动删除否则关闭页面也会生效</li>
+<li>、可以多窗口共享</li>
+<li>以键值对的形式存储</li>
+</ol>
+<p>把表单里面的值存储起来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locaLStorage.setItem(key,value)</span><br></pre></td></tr></table></figure>
+
+<p>把表单里面的值获取出来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">localStorage</span>.getItem(key);</span><br></pre></td></tr></table></figure>
+
+<p>移除表单里面的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">localStorage</span>.removeItem(key);</span><br></pre></td></tr></table></figure>
+
+<p>清除所有数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">localStorage</span>.clear()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>记住用户名案例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; id=&quot;username&quot;&gt; &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;remember&quot;&gt; 记住用户名</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 获取元素</span><br><span class="line">        var username = document.querySelector(&#x27;#username&#x27;);</span><br><span class="line">        var remember = document.querySelector(&#x27;#remember&#x27;);</span><br><span class="line">        if (localStorage.getItem(&#x27;username&#x27;)) &#123;</span><br><span class="line">            username.value = localStorage.getItem(&#x27;username&#x27;);</span><br><span class="line">            remember.checked = true;</span><br><span class="line">        &#125;</span><br><span class="line">        remember.addEventListener(&#x27;change&#x27;, function () &#123;</span><br><span class="line">            if (this.checked) &#123;</span><br><span class="line">                console.log(this.checked);</span><br><span class="line">                localStorage.setItem(&#x27;username&#x27;, username.value);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                localStorage.removeItem(&#x27;username&#x27;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+                      
+
+                        
+        </div>
+        <div class="article-info article-info-index">
+          
+              
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端 js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+                
+
+                  
+                    <p class="article-more-link">
+                      <a class="article-more-a" href="/2021/05/11/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/">
+                        展开全文 >>
+                      </a>
+                    </p>
+                    
+
+                      
+                            <div class="clearfix"></div>
+        </div>
+  </div>
+</article>
+
+      <aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+        
   
     <article id="post-动态规划-最小路径和"
   class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -820,6 +1050,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">前端 js</a>
               </li>
             
             <div class="clearfix"></div>

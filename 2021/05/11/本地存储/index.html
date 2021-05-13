@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>最小的k个数 | dandan</title>
+  <title>本地存储 | dandan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最小的k个数传统方法首先将数组排序，然后选择前k个数返回。由于排序的时间复杂度为O(nlogn) 去排序后前k个数的时间复杂度为O(k)，所以，总的时间复杂度为O(nlogn+ k) 12345678vector&lt;int&gt; getLeastNumbers_Solution(vector&lt;int&gt; input, int k) &amp;#123;    vector&lt;int&amp;g">
+  <meta name="description" content="本地存储特性：  数据存储在用户浏览器中  设置、读取方便、甚至页面刷新不丢失数据  容量比较大，sessionStorage约 5M,localStorage约20M  只能存储字符串，可以将对象JSON.stringify()编码后存储   一、sessionStorage 数据的存储以及获取window.sessionStorage  生命周期为关闭浏览器窗口 在同一个窗口（页面）下数据可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最小的k个数">
-<meta property="og:url" content="http://example.com/2021/05/08/%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/index.html">
+<meta property="og:title" content="本地存储">
+<meta property="og:url" content="http://example.com/2021/05/11/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/index.html">
 <meta property="og:site_name" content="dandan">
-<meta property="og:description" content="最小的k个数传统方法首先将数组排序，然后选择前k个数返回。由于排序的时间复杂度为O(nlogn) 去排序后前k个数的时间复杂度为O(k)，所以，总的时间复杂度为O(nlogn+ k) 12345678vector&lt;int&gt; getLeastNumbers_Solution(vector&lt;int&gt; input, int k) &amp;#123;    vector&lt;int&amp;g">
+<meta property="og:description" content="本地存储特性：  数据存储在用户浏览器中  设置、读取方便、甚至页面刷新不丢失数据  容量比较大，sessionStorage约 5M,localStorage约20M  只能存储字符串，可以将对象JSON.stringify()编码后存储   一、sessionStorage 数据的存储以及获取window.sessionStorage  生命周期为关闭浏览器窗口 在同一个窗口（页面）下数据可以">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-05-08T00:39:56.000Z">
-<meta property="article:modified_time" content="2021-05-08T03:14:37.307Z">
+<meta property="article:published_time" content="2021-05-11T03:13:10.000Z">
+<meta property="article:modified_time" content="2021-05-11T06:13:27.925Z">
 <meta property="article:author" content="dandan">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="前端 js">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="dandan" type="application/atom+xml">
@@ -186,7 +186,7 @@
           </div>
           <div id="js-content" class="content-ll">
             
-        <article id="post-最小的k个数"
+        <article id="post-本地存储"
   class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -194,7 +194,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      最小的k个数
+      本地存储
     </h1>
   
 
@@ -210,20 +210,67 @@
             
               <!--显示阅读次数完毕-->
               
-                <a href="/2021/05/08/%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2021-05-08T00:39:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-08</time>
+                <a href="/2021/05/11/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/" class="archive-article-date">
+  	<time datetime="2021-05-11T03:13:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-11</time>
 </a>
                   
       </header>
       
         <div class="article-entry" itemprop="articleBody">
           
-                    <h2 id="最小的k个数"><a href="#最小的k个数" class="headerlink" title="最小的k个数"></a>最小的k个数</h2><h3 id="传统方法"><a href="#传统方法" class="headerlink" title="传统方法"></a>传统方法</h3><p>首先将数组排序，然后选择前k个数返回。由于排序的时间复杂度为O(nlogn) 去排序后前k个数的时间复杂度为O(k)，所以，总的时间复杂度为O(nlogn+ k)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">getLeastNumbers_Solution</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; input, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">    <span class="built_in">sort</span>(input.<span class="built_in">begin</span>(),input.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i ++) &#123;</span><br><span class="line">        res.<span class="built_in">push_back</span>(input[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                    <p>本地存储特性：</p>
+<ol>
+<li><p>数据存储在用户浏览器中</p>
+</li>
+<li><p>设置、读取方便、甚至页面刷新不丢失数据</p>
+</li>
+<li><p>容量比较大，sessionStorage约 5M,localStorage约20M</p>
+</li>
+<li><p>只能存储字符串，可以将对象JSON.stringify()编码后存储</p>
+</li>
+</ol>
+<h3 id="一、sessionStorage-数据的存储以及获取"><a href="#一、sessionStorage-数据的存储以及获取" class="headerlink" title="一、sessionStorage 数据的存储以及获取"></a>一、sessionStorage 数据的存储以及获取</h3><p>window.sessionStorage</p>
+<ol>
+<li>生命周期为关闭浏览器窗口</li>
+<li>在同一个窗口（页面）下数据可以共享</li>
+<li>以键值对的形式存储使用</li>
+</ol>
+<p>把表单里面的值存储起来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.setItem(key,value)</span><br></pre></td></tr></table></figure>
 
-<h3 id="采用优先级队列"><a href="#采用优先级队列" class="headerlink" title="采用优先级队列"></a>采用优先级队列</h3><p>优先级队列内部是用堆来维护的，由于是一个队列，所以只能在低端加入元素，并从顶端取出元素，自动按照权值排序，权值排在最高者排在最前面。</p>
-<p>所以针对本题只需要维护一个长度为k的优先级队列，依次压出堆顶元素，添加到返回数组中，最后翻转数组就得到结果。 时间复杂度：需要遍历数组input，同时每次维护优先级队列的时间复杂度为O(logk），所以总的时间复杂度为O(nlogk）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">getLeastNumbers_Solution</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; input, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>&gt; head;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> x : input) &#123;</span><br><span class="line">        head.<span class="built_in">push</span>(x);</span><br><span class="line">        <span class="keyword">if</span> (head.<span class="built_in">size</span>() &gt; k) head.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(head.<span class="built_in">size</span>()) &#123;</span><br><span class="line">        res.<span class="built_in">push_back</span>(head.<span class="built_in">top</span>());</span><br><span class="line">        head.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">reverse</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把表单里面的值获取出来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.getItem(key);</span><br></pre></td></tr></table></figure>
+
+<p>移除表单里面的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.removeItem(key);</span><br></pre></td></tr></table></figure>
+
+<p>清除所有数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.clear()</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="二、localStorage-数据的存储以及获取"><a href="#二、localStorage-数据的存储以及获取" class="headerlink" title="二、localStorage 数据的存储以及获取"></a>二、localStorage 数据的存储以及获取</h3><p>window.localStorage</p>
+<ol>
+<li>生命周期永久有效，除非手动删除否则关闭页面也会生效</li>
+<li>、可以多窗口共享</li>
+<li>以键值对的形式存储</li>
+</ol>
+<p>把表单里面的值存储起来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locaLStorage.setItem(key,value)</span><br></pre></td></tr></table></figure>
+
+<p>把表单里面的值获取出来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">localStorage</span>.getItem(key);</span><br></pre></td></tr></table></figure>
+
+<p>移除表单里面的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">localStorage</span>.removeItem(key);</span><br></pre></td></tr></table></figure>
+
+<p>清除所有数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">localStorage</span>.clear()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>记住用户名案例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; id=&quot;username&quot;&gt; &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;remember&quot;&gt; 记住用户名</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 获取元素</span><br><span class="line">        var username = document.querySelector(&#x27;#username&#x27;);</span><br><span class="line">        var remember = document.querySelector(&#x27;#remember&#x27;);</span><br><span class="line">        if (localStorage.getItem(&#x27;username&#x27;)) &#123;</span><br><span class="line">            username.value = localStorage.getItem(&#x27;username&#x27;);</span><br><span class="line">            remember.checked = true;</span><br><span class="line">        &#125;</span><br><span class="line">        remember.addEventListener(&#x27;change&#x27;, function () &#123;</span><br><span class="line">            if (this.checked) &#123;</span><br><span class="line">                console.log(this.checked);</span><br><span class="line">                localStorage.setItem(&#x27;username&#x27;, username.value);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                localStorage.removeItem(&#x27;username&#x27;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 
                       
@@ -271,7 +318,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">前端 js</a>
         		</li>
       		
 		</ul>
@@ -328,7 +375,7 @@
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
       <img
-        src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://danguanghua.github.io/021/05/08/%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/"
+        src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://danguanghua.github.io/021/05/11/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/"
         alt="微信分享二维码">
     </div>
   </div>
@@ -343,15 +390,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/05/08/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/05/13/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          编程思想
+          动态规划-最长回文子串
         
       </div>
     </a>
   
+  
+    <a href="/2021/05/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">动态规划-最小路径和</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -376,7 +428,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">最小的k个数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">传统方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%87%E7%94%A8%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97"><span class="toc-number">1.2.</span> <span class="toc-text">采用优先级队列</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81sessionStorage-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8%E4%BB%A5%E5%8F%8A%E8%8E%B7%E5%8F%96"><span class="toc-number">1.</span> <span class="toc-text">一、sessionStorage 数据的存储以及获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81localStorage-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8%E4%BB%A5%E5%8F%8A%E8%8E%B7%E5%8F%96"><span class="toc-number">2.</span> <span class="toc-text">二、localStorage 数据的存储以及获取</span></a></li></ol>
                     </div>
                 </span>
             </div>
